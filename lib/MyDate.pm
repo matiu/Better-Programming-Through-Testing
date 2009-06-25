@@ -18,16 +18,10 @@ sub is_leap_year {
     my $ret = 0;
     $year ||= '';
 
-    return
-        ($year % 400 ) == 0
-        ||
-        (
-        ($year % 4) == 0 
-        && 
-        ($year % 100 ) != 0
-        )
-        ? 1 : 0
-        ;
+    return 1 if $year % 400 == 0;
+    return 0 if $year % 100 == 0;
+    return 1 if $year % 4   == 0;
+    return 0;
 }
 
 my $is_leap = MyDate->is_leap_year(1191);
